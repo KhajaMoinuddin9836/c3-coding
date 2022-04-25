@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies</title>
+    <style>
+      #search{
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <h1>Movie List</h1>
+      <!-- Display the wallet amount here inside h1 tag with id as "wallet". Note only amount, no extra text. Like 500 not Rs 500 -->
+    </div>
+    <div id="search_bar">
+      <!-- input box for searching movies with id as "search" -->
+      <!-- No button should be there for searching movies, it should search with input  -->
+      <center><input id="search" placeholder="seacrh movie"/></center>
+    </div>
+
+    <div id="movies">
+      <!-- Append all searched movies here in grid format -->
+      <img src="" id="png" alt=""/>
+      <!-- Every movie card should have image, title and a book now button  -->
+      <p id="title"></p>
+      <!-- Book now buttons should have class "book_now"  -->
+      <button class="book now">Book Now</button>
+    </div>
+  </body>
+</html>
+
+
+<script>
+
+const url = "http://www.omdbapi.com/?i=tt3896198&apikey=9f99e1c3";
+
+  fetch(url)
+  .then(function (res){
+    return res.json();
+  })
+  .then(function (res){
+    appendData(res)
+  })
+  .catch(function (err){
+    console.log(err)
+  })
+
+    function appendData(data){
+      data.forEach(function (el){
+
+        let div = document.getElementById("#movie");
+        let image = document.getElementById("#png")
+        image.src=el.image;
+
+        let title = document.getElementById("#title");
+        title.innerText = el.title;
+
+        let book = document.getElementsByClassName("#book_now");
+        book.innerText = "Book now";
+        book.addEventListener("click", function (){
+          btn(elem);
+        })
+        div.append(image,title,book)
+      })
+    }
+      function btn(elem){
+        console.log(elem)
+      }
+    
+
+ 
+</script>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Amount</title>
+    <style>
+      #navbar{
+        display: flex;
+        
+      }
+      #wallet{
+        margin-left: 1000px;
+        
+      }
+      #amount{
+        margin-top: 50px;
+        width:250px;
+      }
+      #add_to_wallet{
+        margin-top: 50px;
+      }
+      #book_movies{
+        margin-top: 30px;
+      }
+      a{
+        color:black;
+      }
+    
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <h1>Add Money to wallet</h1>
+      <!-- Display the wallet amount here inside h1 tag with id as "wallet". Note only amount, no extra text. Like 500 not Rs 500 -->
+      <h1 id="wallet">0</h1>
+    </div>
+    <div id="add-money">
+      <!-- input box for accepting money with id as "amount" -->
+     <center><input id="amount" text="number" placeholder="Enter Amount in rupees"/><br>
+      <!-- button with id as "add_to_wallet" -->
+      <button id="add_to_wallet">Add to Wallet</button><br>
+      <!-- button with id as "book_movies" to go to movies.html -->
+      <button id="book_movies"><a href="movies.html">Book Movie</a></button></center>
+    </div>
+  </body>
+</html>
+
+<script>
+  
+   let btn = document.getElementById("add_to_wallet");
+   let inpvalue = document.getElementById("amount");
+    let total = document.getElementById("wallet");
+          btn.onclick = function(){
+            let amount = btn.value;
+            let value = inpvalue.value;
+            console.log(amount);
+          
+            if(amount && value){
+            localStorage.setItem(amount,value);
+            location.reload();
+            }
+          }
+          var sum=0;
+          for(var i=0; i<localStorage.length; i++)
+          {
+            let amount = localStorage.amount[i];
+            let value = localStorage.amount[amount];
+            total.innerText +=`$[amount}: $[value]`;
+
+            sum+=localStorage[i]
+          }console.log(sum)
+
+</script>
